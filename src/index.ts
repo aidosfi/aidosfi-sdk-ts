@@ -22,4 +22,8 @@ export type {
   WsEvent,
   AidosError,
   AidosConfig,
+  RetryConfig,
+  IdempotencyConfig,
+  HooksConfig,
+  ReconnectConfig,
 } from './types.js';

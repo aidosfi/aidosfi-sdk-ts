@@ -31,6 +31,7 @@ npm install @aidosfi/sdk
 | **Agents**    | Deploy, pause, resume, stop autonomous TEE-guarded trading agents with 6 strategies |
 | **Swaps**     | Execute darkpool asset swaps with configurable slippage (ZK-settled) |
 | **WebSocket** | Real-time feed: balance updates, agent status changes, card swipes, swap fills |
+| **Health**    | Check API health status (`/v1/health` → status, version, uptime) |
 | **Pagination**| Cursor-based pagination for list endpoints |
 | **Errors**    | Typed `AidosApiError` with code, status, and details |
 

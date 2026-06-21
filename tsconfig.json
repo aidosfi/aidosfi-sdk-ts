@@ -9,6 +9,7 @@
     "noUnusedLocals": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
+    "types": ["node"],
     "moduleResolution": "NodeNext"
   },
   "include": ["src/**/*"],

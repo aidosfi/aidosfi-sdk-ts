@@ -117,6 +117,14 @@ export interface SwapReceipt {
   settledAt: string;
 }
 
+// ── Health ───────────────────────────────────────────────────────
+
+export interface HealthResponse {
+  status: string;        // 'healthy' | 'degraded' | 'unhealthy'
+  version?: string;
+  uptime?: number;       // seconds
+}
+
 // ── Pagination ──────────────────────────────────────────────────
 
 export interface PaginationParams {
@@ -147,11 +155,43 @@ export interface AidosError {
   details?: unknown;
 }
 
+// ── Retry ───────────────────────────────────────────────────────
+
+export interface RetryConfig {
+  maxRetries?: number;      // default: 3
+  initialDelay?: number;    // ms, default: 300
+  maxDelay?: number;        // ms, default: 10_000
+}
+
+// ── Idempotency ─────────────────────────────────────────────────
+
+export interface IdempotencyConfig {
+  enabled?: boolean;  // default: false
+}
+
+// ── Hooks ───────────────────────────────────────────────────────
+
+export interface HooksConfig {
+  onRequest?: (req: { method: string; url: string; headers: Record<string, string> }) => void;
+  onResponse?: (res: { status: number; url: string; duration: number }) => void;
+  onError?: (err: { error: Error; url: string; duration: number }) => void;
+}
+
+// ── WebSocket Reconnect ─────────────────────────────────────────
+
+export interface ReconnectConfig {
+  maxReconnectAttempts?: number;   // default: 10
+  reconnectDelay?: number;         // ms, default: 1000
+}
+
 // ── Client Config ───────────────────────────────────────────────
 
 export interface AidosConfig {
   apiKey: string;
-  baseUrl?: string;     // default: https://api.aidosfi.com
-  wsUrl?: string;       // default: wss://ws.aidosfi.com
-  timeout?: number;     // ms, default: 30_000
+  baseUrl?: string;          // default: https://api.aidosfi.com
+  wsUrl?: string;            // default: wss://ws.aidosfi.com
+  timeout?: number;          // ms, default: 30_000
+  retry?: RetryConfig;
+  idempotency?: IdempotencyConfig;
+  hooks?: HooksConfig;
 }
