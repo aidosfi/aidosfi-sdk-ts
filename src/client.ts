@@ -114,7 +114,7 @@ export class AidosClient {
   // ── Deposit ──────────────────────────────────────────────────
 
   async deposit(accountId: string, req: DepositRequest): Promise<DepositReceipt> {
-    return this.request<DepositReceipt>('POST', `/v1/accounts/${accountId}/deposits`, req);
+    return this.request<DepositReceipt>('POST', `/v1/accounts/${accountId}/deposit`, req);
   }
 
   // ── Card ─────────────────────────────────────────────────────
